@@ -9,7 +9,7 @@ import numpy as np
 import implicit
 import scipy
 
-from data import load_reviewer_movie, MovieRetriever
+from main.data import load_reviewer_movie, MovieRetriever
 from sklearn.metrics import mean_squared_error
 
 
@@ -52,7 +52,7 @@ class ImplicitRecommender:
 
 
 if __name__ == "__main__":
-    # load user movie matrix
+    # load reviewer movie matrix
     user_movie = load_reviewer_movie(Path("user_movie_rating_vf.csv"))
 
     # instantiate movie retriever
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # instantiate ALS using implicit
     implict_model = implicit.als.AlternatingLeastSquares(
-        factors=50, iterations=10, regularization=0.01
+        factors=10, iterations=10, regularization=0.01
     )
 
     # instantiate recommender, fit, and recommend
